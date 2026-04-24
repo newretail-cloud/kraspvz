@@ -1,0 +1,31 @@
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: pvz_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: pvz_bot
+      POSTGRES_USER: pvz_user
+      POSTGRES_PASSWORD: pvz_password123
+    volumes:
+      - /mnt/storage/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - pvz_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: pvz_redis
+    restart: always
+    volumes:
+      - /mnt/storage/redis/data:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - pvz_network
+
+networks:
+  pvz_network:
+    driver: bridge
