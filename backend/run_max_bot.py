@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from adapters.max.bot_simple import run
+
+if __name__ == "__main__":
+    run()
