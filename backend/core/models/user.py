@@ -25,6 +25,7 @@ class User(Base):
     is_blocked = Column(Boolean, default=False)
     blocked_until = Column(DateTime)
     rating = Column(Integer, default=0)
+    hashed_password = Column(String(200), nullable=True)
     
     # Связь с ролями (многие-ко-многим)
     roles = relationship("Role", secondary="user_roles", back_populates="users")
